@@ -5,18 +5,19 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "docker run hello-world"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+                sh "docker build -t my-react-app ."
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh "docker run -d -p 80:80 my-react-app"
             }
         }
+        stage("Post Deploy") {
+            steps {
+                docker system prune -f
+              }
+          }
     }
 }
