@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh "curl https://mise.run | sh"
+                sh "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=10.1.0 sh -"
             }
         }
         stage('Test') {
