@@ -16,7 +16,7 @@ pipeline {
         }
         stage("Post Deploy") {
             steps {
-                docker system prune -f
+                sh "docker system prune -f"
               }
           }
     }
