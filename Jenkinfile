@@ -7,6 +7,9 @@ pipeline {
                 echo 'Building..'
                 sh "curl https://mise.run | sh"
                 sh "curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=10.1.0 sh -"
+                sh "source /var/lib/jenkins/.bashrc"
+                sh "mise use node@latest"
+                sh "node --version"
             }
         }
         stage('Test') {
