@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh "docker build -t my-react-app ."
+                sh "node --version"
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh "docker run -d -p 80:80 my-react-app"
+                sh "pnpm --version"
             }
         }
         stage("Post Deploy") {
